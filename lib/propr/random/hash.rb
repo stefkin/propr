@@ -7,7 +7,6 @@ class Hash
 end
 
 class << Hash
-
   # @example
   #   Hash.random do
   #     m.bind(Integer.random){|k| m.bind(String.random){|v| m.unit([k,v]) }}
@@ -31,7 +30,7 @@ class << Hash
     #   end
     #
     m.bind(Integer.random(options.merge(min: min, max: max))) do |size|
-      m.bind(m.sequence([pair]*size)) do |pairs|
+      m.bind(m.sequence([pair] * size)) do |pairs|
         m.unit(Hash[pairs])
       end
     end
@@ -46,7 +45,7 @@ class << Hash
   def random_vals(hash, m = Propr::Random)
     # Convert hash of key => generator to a list of pair-generators,
     # where the pairs correspond to the original set of [key, value]
-    pairs = hash.map{|k,v| m.bind(v){|v| m.unit([k, v]) }}
+    pairs = hash.map{ |k, v| m.bind(v){ |v| m.unit([k, v]) } }
 
     m.bind(m.sequence(pairs)) do |pairs|
       m.unit(Hash[pairs])

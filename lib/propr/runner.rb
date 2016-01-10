@@ -4,7 +4,7 @@ module Propr
 
     def initialize(minpass, maxskip, scale)
       @minpass, @maxskip, @scale =
-        minpass, maxskip, scale || lambda {|*_| 1 }
+        minpass, maxskip, scale || lambda { |*_| 1 }
     end
 
     def run(property, generator)
@@ -12,7 +12,7 @@ module Propr
       skipped = 0
       wrapped = Dsl::Check.wrap(generator)
 
-      until passed >= @minpass or skipped >= @maxskip
+      until passed >= @minpass || skipped >= @maxskip
         input, _, success =
           Random.run(wrapped, @scale.call(passed, skipped, @minpass, @maxskip))
 
@@ -38,7 +38,7 @@ module Propr
             # GuardFailure in property
             skipped += 1
           rescue
-            raise Failure.new($!, input, nil, passed, skipped)#, nil, location
+            raise Failure.new($!, input, nil, passed, skipped) # , nil, location
           end
         else
           # GuardFailure in generator

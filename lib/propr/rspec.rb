@@ -1,5 +1,4 @@
 module Propr
-
   class RSpecAdapter
     def initialize(group, options, property)
       @options, @group, @property =
@@ -8,8 +7,8 @@ module Propr
       # Run each property 100 times, allow 50 retries, and
       # start the scale at 0, grow suddenly towards the end
       @runner = Runner.new(100, 50,
-      # lambda{|p,s,t,_| (p+s <= t ? p+s : t) / t })
-        lambda{|p,s,t,_| (BigDecimal(p+s <= t ? p+s : t) / t) })
+                           # lambda{|p,s,t,_| (p+s <= t ? p+s : t) / t })
+                           lambda{ |p, s, t, _| (BigDecimal(p + s <= t ? p + s : t) / t) })
     end
 
     def check(*args, &generator)
@@ -54,17 +53,17 @@ module Propr
 
       xs = [counterex]
 
-      while true
+      loop do
         # Generate simpler examples
         ys = Array.bind(xs) do |args|
-          head, *tail = args.map{|x| x.respond_to?(:shrink) ? x.shrink : [x] }
+          head, *tail = args.map{ |x| x.respond_to?(:shrink) ? x.shrink : [x] }
           head.product(*tail)
         end
 
         zs = []
 
         # Collect counter examples
-        until ys.empty? or zs.length >= 10
+        until ys.empty? || zs.length >= 10
           args = ys.delete_at(rand(ys.size))
 
           unless @property.call(*args)
@@ -82,16 +81,15 @@ module Propr
       end
     end
 
-  private
+    private
 
     def location(data)
       case data
       when Proc
-        ["#{data.source_location.join(":")}"]
+        ["#{data.source_location.join(':')}"]
       when Array
         [data.first]
       end
     end
   end
-
 end

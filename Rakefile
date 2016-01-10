@@ -21,7 +21,7 @@ begin
     t.verbose = false
     t.pattern = "#{relpath}/spec/examples/**/*.example"
 
-    t.rspec_opts  = %w(--color)
+    t.rspec_opts = %w(--color)
     t.rspec_opts << "--profile"
     t.rspec_opts << "-I#{abspath}/spec"
   end
@@ -44,7 +44,7 @@ begin
       t.verbose = false
       t.pattern = "#{relpath}/spec/examples/**/*.example"
 
-      t.rspec_opts  = %w(--color --format p)
+      t.rspec_opts = %w(--color --format p)
       t.rspec_opts << "-I#{abspath}/spec"
     end
   rescue LoadError
@@ -66,7 +66,7 @@ begin
   require "yard"
 
   # Note options are loaded from .yardopts
-  YARD::Rake::YardocTask.new(:yard => :clobber_yard)
+  YARD::Rake::YardocTask.new(yard: :clobber_yard)
 
   task :clobber_yard do
     rm_rf "#{relpath}/doc/generated"
@@ -80,4 +80,4 @@ rescue LoadError
   end
 end
 
-task :default => :spec
+task default: :spec

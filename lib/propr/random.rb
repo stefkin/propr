@@ -1,5 +1,4 @@
 module Propr
-
   class Random
   end
 
@@ -17,7 +16,7 @@ module Propr
       skipped = 0
       scale   = bound(scale)
 
-      while true
+      loop do
         value, _, success = computation.call(scale)
 
         if success
@@ -70,7 +69,7 @@ module Propr
         # Shrink range exponentially, and -1 + scale reduces the
         # rng_ to 0 when scale = 0, but rng_ = range when scale = 1.
         lambda do |scale|
-          rng_ = (range ** scale) - 1 + scale
+          rng_ = (range**scale) - 1 + scale
           pct  = (number - zero) / range
           [zero + rng_ * pct, scale, true]
         end
@@ -81,7 +80,7 @@ module Propr
     # 0 <= x < 1. This distribution is not weighted using `scale`.
     #
     def rand(limit = nil)
-      if not limit.nil? and limit <= 0
+      if !limit.nil? && limit <= 0
         raise InvalidArgument, "limit <= 0"
       end
 
@@ -90,7 +89,7 @@ module Propr
       end
     end
 
-  private
+    private
 
     def bound(scale)
       if scale > 1
@@ -101,7 +100,6 @@ module Propr
         scale
       end
     end
-
   end
 end
 

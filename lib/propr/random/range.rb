@@ -14,9 +14,9 @@ class << Range
       else
         min = options[:min]
         max = options[:max]
-        min or max or raise ArgumentError,
-          "must provide min, max, or block"
-        (min or max).class.random(options)
+        min || max || raise(ArgumentError,
+                            "must provide min, max, or block")
+        (min || max).class.random(options)
       end
 
     m.bind(random) do |a|

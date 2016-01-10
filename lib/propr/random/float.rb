@@ -4,7 +4,7 @@ class << Float
   # @return [Float]
   def random(options = {}, m = Propr::Random)
     min = (options[:min] || -Float::INFINITY).to_f
-    max = (options[:max] ||  Float::INFINITY).to_f
+    max = (options[:max] || Float::INFINITY).to_f
 
     min_ = if min.finite? then min else -Float::MAX end
     max_ = if max.finite? then max else  Float::MAX end
@@ -23,12 +23,12 @@ class << Float
         end
       when Numeric
         raise ArgumentError,
-          "center < min" if center < min
+              "center < min" if center < min
         raise ArgumentError,
-          "center > max" if center > max
+              "center > max" if center > max
         center
       else raise ArgumentError,
-        "center must be :min, :mid, :max, or min <= Integer <= max"
+                 "center must be :min, :mid, :max, or min <= Integer <= max"
       end
 
     # @todo: -Float::INFINITY, +Float::INFINITY, -0.0, Float::NAN

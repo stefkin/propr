@@ -7,7 +7,7 @@ class << BigDecimal
   # @return [BigDecimal]
   def random(options = {}, m = Propr::Random)
     min = BigDecimal(options[:min] || -INF)
-    max = BigDecimal(options[:max] ||  INF)
+    max = BigDecimal(options[:max] || INF)
 
     min_ = if min.finite? then min else BigDecimal(-Float::MAX, 0) end
     max_ = if max.finite? then max else BigDecimal( Float::MAX, 0) end
@@ -21,12 +21,12 @@ class << BigDecimal
       when :max then max_
       when Numeric
         raise ArgumentError,
-          "center < min" if center < min
+              "center < min" if center < min
         raise ArgumentError,
-          "center > max" if center > max
+              "center > max" if center > max
         center
       else raise ArgumentError,
-        "center must be :min, :mid, :max, or min <= Integer <= max"
+                 "center must be :min, :mid, :max, or min <= Integer <= max"
       end
 
     # @todo: -INF, +INF, -0.0, NAN

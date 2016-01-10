@@ -1,8 +1,8 @@
 require "date"
 
 class << Date
-  MIN = Date.jd(1721058) # 0000-01-01
-  MAX = Date.jd(5373484) # 9999-12-31
+  MIN = Date.jd(1_721_058) # 0000-01-01
+  MAX = Date.jd(5_373_484) # 9999-12-31
 
   def random(options = {}, m = Propr::Random)
     # These would be constants but `jd` is only defined

@@ -1,5 +1,5 @@
 class Array
-  def random(options = {}, m = Propr::Random)
+  def random(_options = {}, m = Propr::Random)
     m.bind(m.rand(size)) do |index|
       m.unit(self[index])
     end
@@ -13,7 +13,7 @@ class << Array
     item = yield
 
     m.bind(Integer.random(min: min, max: max, center: min)) do |size|
-      m.sequence([item]*size)
+      m.sequence([item] * size)
     end
   end
 end

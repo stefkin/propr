@@ -7,22 +7,22 @@ class << String
       CLASSES[regexp] || set.scan(regexp)
     end
 
-    CLASSES = Hash.new
+    CLASSES = {}
     CLASSES.update \
-      :any    => ALL.split(//),
-      :ascii  => ASCII.split(//),
-      :alnum  => Characters.of(/[[:alnum:]]/),
-      :alpha  => Characters.of(/[[:alpha:]]/),
-      :blank  => Characters.of(/[[:blank:]]/),
-      :cntrl  => Characters.of(/[[:cntrl:]]/),
-      :digit  => Characters.of(/[[:digit:]]/),
-      :graph  => Characters.of(/[[:graph:]]/),
-      :lower  => Characters.of(/[[:lower:]]/),
-      :print  => Characters.of(/[[:print:]]/),
-      :punct  => Characters.of(/[[:punct:]]/),
-      :space  => Characters.of(/[[:space:]]/),
-      :upper  => Characters.of(/[[:upper:]]/),
-      :xdigit => Characters.of(/[[:xdigit:]]/)
+      any: ALL.split(//),
+      ascii: ASCII.split(//),
+      alnum: Characters.of(/[[:alnum:]]/),
+      alpha: Characters.of(/[[:alpha:]]/),
+      blank: Characters.of(/[[:blank:]]/),
+      cntrl: Characters.of(/[[:cntrl:]]/),
+      digit: Characters.of(/[[:digit:]]/),
+      graph: Characters.of(/[[:graph:]]/),
+      lower: Characters.of(/[[:lower:]]/),
+      print: Characters.of(/[[:print:]]/),
+      punct: Characters.of(/[[:punct:]]/),
+      space: Characters.of(/[[:space:]]/),
+      upper: Characters.of(/[[:upper:]]/),
+      xdigit: Characters.of(/[[:xdigit:]]/)
   end
 
   # @return [String]

@@ -39,11 +39,11 @@ module Propr
 
     def to_s
       if @shrunken.nil?
-        ["input: #{counterex.map(&:inspect).join(", ")}",
+        ["input: #{counterex.map(&:inspect).join(', ')}",
          "after: #{@passed} passed, #{@skipped} skipped"].join("\n")
       else
-        ["input:    #{counterex.map(&:inspect).join(", ")}",
-         "shrunken: #{shrunken.map(&:inspect).join(", ")}",
+        ["input:    #{counterex.map(&:inspect).join(', ')}",
+         "shrunken: #{shrunken.map(&:inspect).join(', ')}",
          "after: #{@passed} passed, #{@skipped} skipped"].join("\n")
       end
     end
@@ -76,12 +76,12 @@ module Propr
     def to_s
       if @shrunken.nil?
         [@exception.message,
-         "input: #{counterex.map(&:inspect).join(", ")}",
+         "input: #{counterex.map(&:inspect).join(', ')}",
          "after: #{@passed} passed, #{@skipped} skipped"].join("\n")
       else
         [@exception.message,
-         "input:    #{counterex.map(&:inspect).join(", ")}",
-         "shrunken: #{shrunken.map(&:inspect).join(", ")}",
+         "input:    #{counterex.map(&:inspect).join(', ')}",
+         "shrunken: #{shrunken.map(&:inspect).join(', ')}",
          "after: #{@passed} passed, #{@skipped} skipped"].join("\n")
       end
     end
@@ -103,12 +103,11 @@ module Propr
     end
   end
 
-  def self.RSpec(checkdsl, propdsl)
+  def self.RSpec(_checkdsl, _propdsl)
     Module.new.tap do |m|
       m.send(:define_method, :property) { raise }
       m.send(:define_singleton_method, :rand) { rand }
       m.send(:define_singleton_method, :included) do |scope|
-
         # @todo: raise an error if body isn't given
         scope.send(:define_singleton_method, :property) do |name = "anonymous", options = {}, &body|
           q = Dsl::Property.wrap(body)

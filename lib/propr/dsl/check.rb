@@ -1,8 +1,6 @@
 module Propr
   module Dsl
-
     class Check
-
       # Generates a monadic action, to be run with Random.eval
       def self.wrap(block, m = Propr::Random)
         new(block, m).instance_exec(&block)
@@ -37,13 +35,11 @@ module Propr
         @m.scale(*args)
       end
 
-    private
+      private
 
       def method_missing(name, *args, &block)
         @context.__send__(name, *args, &block)
       end
-
     end
-
   end
 end

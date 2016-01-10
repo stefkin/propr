@@ -1,5 +1,5 @@
 class Integer
-  MAX = 2 ** (0.size * 8 - 2) - 1
+  MAX = 2**(0.size * 8 - 2) - 1
   MIN = -MAX + 1
 end
 
@@ -9,7 +9,7 @@ class << Integer
     max = (options[:max] || Integer::MAX).to_i
 
     raise ArgumentError,
-      "min > max" if min > max
+          "min > max" if min > max
 
     range  = max - min
     center = options.fetch(:center, :mid)
@@ -20,12 +20,12 @@ class << Integer
       when :max then max
       when Numeric
         raise ArgumentError,
-          "center < min" if center < min
+              "center < min" if center < min
         raise ArgumentError,
-          "center > max" if center > max
+              "center > max" if center > max
         center
       else raise ArgumentError,
-        "center must be :min, :mid, :max, or min <= Integer <= max"
+                 "center must be :min, :mid, :max, or min <= Integer <= max"
       end
 
     m.bind(m.rand(range + 1)) do |rnd|

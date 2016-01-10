@@ -8,11 +8,11 @@ Pathname.new(File.dirname(__FILE__)).tap do |specdir|
   end
 end
 
-RSpec.configure do |config|
+RSpec.configure do |_config|
   include Propr::RSpec
 
-  #srand 146211424375622429406889408197139382303
-  srand.tap{|seed| puts "Run with srand #{seed}"; srand seed }
+  # srand 146211424375622429406889408197139382303
+  srand.tap{ |seed| puts "Run with srand #{seed}"; srand seed }
 
   # rspec -I lib -t random spec
   # config.filter_run :random => true
@@ -20,5 +20,4 @@ RSpec.configure do |config|
   # rspec -I lib -t ~random spec
   # config.filter_run_excluding :random => true
   # config.filter_run(:focus  => true)
-
 end
