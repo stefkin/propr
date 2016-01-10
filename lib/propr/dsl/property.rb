@@ -14,7 +14,7 @@ module Propr
         when 1 then lambda{ |a| new(block, m).instance_exec(a, &block) }
         when 2 then lambda{ |a, b| new(block, m).instance_exec(a, b, &block) }
         when 3 then lambda{ |a, b, c| new(block, m).instance_exec(a, b, c, &block) }
-        when 4 then lambda{ |a, b, c, d| new(block, m).instance_exec(a, b, c, d & block) }
+        when 4 then lambda{ |a, b, c, d| new(block, m).instance_exec(a, b, c, d, &block) }
         when 5 then lambda{ |a, b, c, d, e| new(block, m).instance_exec(a, b, c, d, e, &block) }
         when 6 then lambda{ |a, b, c, d, e, f| new(block, m).instance_exec(a, b, c, d, e, f, &block) }
         when 7 then lambda{ |a, b, c, d, e, f, g| new(block, m).instance_exec(a, b, c, d, e, f, g, &block) }
