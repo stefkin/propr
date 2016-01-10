@@ -1,8 +1,9 @@
 source "http://rubygems.org"
 
-gem "fr",           "~> 0.9.1"
+gem "fr", "~> 0.9.1"
 
 group :development do
+  gem 'rubocop'
   gem "rake",       "~> 0.9.2"
   gem "simplecov",  "~> 0.6.4"
   gem "rspec",      "~> 2.8.0"
